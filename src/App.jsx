@@ -1,18 +1,14 @@
-import { Book } from './components/Book/Book'
-import { Preloader } from './components/Preloader/Preloader'
+import React from 'react'
 
-const App = props => {
-  return props.isLoading ? (
-    <Preloader />
-  ) : (
-    <div>
-      <div className="container">
-        <Book name="JavaScript" year="2020" price="1500" />
-        <Book name="Vue" year="2021" price="2000" />
-        <Book name="React" year="2023" price="2500" />
+class App extends React.Component {
+
+  render() {
+    return (
+      <div>
+        Hello from React
       </div>
-    </div>
-  )
+    )
+  }
 }
 
 export default App
