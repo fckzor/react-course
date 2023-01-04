@@ -5,9 +5,9 @@ export function Posts(props) {
     props.posts.map(post => (
       <Post
         key={post.id}
+        id={post.id}
         name={post.name}
-        post={post}
-        cb={props.cb}
+        removePost={props.removePost}
       />
     ))
   )

@@ -10,17 +10,15 @@ class App extends React.Component {
     ],
   }
 
-  deletePost = (post) => {
-    const index = this.state.posts.indexOf(post)
-    this.state.posts.splice(index, 1)
-    this.setState({posts: this.state.posts})
+  removePost = (id) => {
+    this.setState({posts: this.state.posts.filter(post => post.id !== id)})
   }
 
   render() {
     return (
       <div className="container">
         <h1>Books</h1>
-        <Posts posts={this.state.posts} cb={this.deletePost} />
+        <Posts posts={this.state.posts} removePost={this.removePost} />
       </div>
     )
   }
