@@ -1,4 +1,5 @@
 import React from 'react'
+import { Posts } from './components/Posts'
 
 class App extends React.Component {
   state = {
@@ -8,14 +9,18 @@ class App extends React.Component {
       {id: 3, name: 'React'},
     ],
   }
-  
+
+  deletePost = (post) => {
+    const index = this.state.posts.indexOf(post)
+    this.state.posts.splice(index, 1)
+    this.setState({posts: this.state.posts})
+  }
+
   render() {
     return (
       <div className="container">
         <h1>Books</h1>
-        {this.state.posts.map(post => (
-          <h4 key={post.id}>{post.name}</h4>
-        ))}
+        <Posts posts={this.state.posts} cb={this.deletePost} />
       </div>
     )
   }
