@@ -1,3 +1,40 @@
+* {
+  box-sizing: border-box;
+}
 body {
   font-family: sans-serif;
+  user-select: none;
+  font-size: 20px;
+}
+h1 {
+  font-size: 25px;
+}
+.container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+.counter-wrapper {
+  display: flex;
+  align-items: flex-end;
+}
+button, input {
+  font-size: inherit;
+  height: 40px;
+}
+button {
+  width: 40px;
+}
+input {
+  width: 120px;
+  margin-right: 20px;
+}
+label span {
+  display: block;
+  font-size: 14px;
+}
+.counter-view {
+  display: inline-block;
+  margin: 0 20px;
+  font-weight: bold;
 }
