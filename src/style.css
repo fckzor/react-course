@@ -5,6 +5,7 @@ body {
   font-family: sans-serif;
   user-select: none;
   font-size: 20px;
+  text-align: center;
 }
 h1 {
   font-size: 25px;
@@ -14,27 +15,12 @@ h1 {
   margin: 0 auto;
   padding: 0 15px;
 }
-.counter-wrapper {
-  display: flex;
-  align-items: flex-end;
-}
-button, input {
-  font-size: inherit;
-  height: 40px;
-}
 button {
-  width: 40px;
-}
-input {
-  width: 120px;
-  margin-right: 20px;
-}
-label span {
-  display: block;
-  font-size: 14px;
+  width: 100px;
+  height: 40px;
 }
 .counter-view {
   display: inline-block;
-  margin: 0 20px;
+  margin: 20px;
   font-weight: bold;
 }
