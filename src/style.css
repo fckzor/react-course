@@ -7,3 +7,6 @@ body {
   margin: 0 auto;
   padding: 0 30px;
 }
+.valid-error {
+  border-color: rgb(255, 125, 125);
+}
