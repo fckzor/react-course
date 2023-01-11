@@ -1,43 +1,33 @@
 import React from "react"
 
 class App extends React.Component {
-  constructor() {
-    super()
 
-    this.state = {
-      card: '',
-      email: '',
+  cardRef = React.createRef()
+  emailRef = React.createRef()
+
+  onSubmit = (e) => {
+    e.preventDefault()
+
+    if (this.cardRef.current.value.length < 16) {
+      alert('invalid card value')
+      return
     }
-    this.cardRef = React.createRef()
-    this.emailRef = React.createRef()
-  }
-  
-  componentDidMount() {
-    this.cardRef.current.focus()
-  }
-  onChangeCard = (e) => {
-    this.setState(() => ({card: e.target.value}), () => {
-      if (this.state.card.length === 16) {
-        this.emailRef.current.focus()
-      }
-    })
-  }
-  onChangeEmail = (e) => {
-    this.setState({email: e.target.value})
+
+    // send
+
+    // clear
+    this.cardRef.current.value = ''
+    this.emailRef.current.value = ''
   }
 
   render() {
-    const { card, email } = this.state
-
     return (
-      <div className="container">
+      <form className="container" onSubmit={this.onSubmit}>
         <input
           ref={this.cardRef}
           type="number"
           name="card"
           placeholder="Your card"
-          value={card}
-          onChange={this.onChangeCard}
         />
         <br />
         <input
@@ -45,10 +35,10 @@ class App extends React.Component {
           type="email"
           name="email"
           placeholder="Your email"
-          value={email}
-          onChange={this.onChangeEmail}
         />
-      </div>
+        <br />
+        <button>send form</button>
+      </form>
     )
   }
 }
