@@ -1,59 +1,53 @@
 import React from "react"
 
 class App extends React.Component {
-  state = {
-    email: '',
-    isAgreeWithTerms: false,
+  constructor() {
+    super()
+
+    this.state = {
+      card: '',
+      email: '',
+    }
+    this.cardRef = React.createRef()
+    this.emailRef = React.createRef()
+  }
+  
+  componentDidMount() {
+    this.cardRef.current.focus()
+  }
+  onChangeCard = (e) => {
+    this.setState(() => ({card: e.target.value}), () => {
+      if (this.state.card.length === 16) {
+        this.emailRef.current.focus()
+      }
+    })
   }
   onChangeEmail = (e) => {
     this.setState({email: e.target.value})
   }
-  onChangeAgreement = (e) => {
-    this.setState({isAgreeWithTerms: e.target.checked})
-  }
-  validateEmail = () => {
-    const regex = /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/ig
-    return regex.test(this.state.email) 
-  }
-  onSubmit = () => {
-    const isValidEmail = this.validateEmail()
 
-    if (!isValidEmail) {
-      alert('Please enter valid email')
-      return
-    }
-    if (!this.state.isAgreeWithTerms) {
-      alert('Please checked agreement conditions')
-      return
-    }
-    
-    this.setState({email: '', isAgreeWithTerms: false})
-    alert('Submit success!')
-  }
   render() {
-    const { email, isAgreeWithTerms } = this.state
+    const { card, email } = this.state
 
     return (
       <div className="container">
         <input
+          ref={this.cardRef}
+          type="number"
+          name="card"
+          placeholder="Your card"
+          value={card}
+          onChange={this.onChangeCard}
+        />
+        <br />
+        <input
+          ref={this.emailRef}
           type="email"
           name="email"
           placeholder="Your email"
           value={email}
           onChange={this.onChangeEmail}
         />
-        <br />
-        <label>
-          <input
-            type="checkbox"
-            name="isAgreeWithTerms"
-            checked={isAgreeWithTerms}
-            onChange={this.onChangeAgreement}
-          />
-          I agree with terms and conditions
-        </label>
-        <br />
-        <button onClick={this.onSubmit}>Send</button>
       </div>
     )
   }
