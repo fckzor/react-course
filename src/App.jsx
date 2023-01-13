@@ -1,18 +1,14 @@
-import React, { useState } from "react"
+import React from 'react'
+import { Context } from './hooks/Context'
+import { Books } from './components/Books'
 
 function App() {
-  const [count, setCount] = useState(0)
-
-  const increement = () => setCount(count + 1)
-  const decreement = () => setCount(count - 1)
   
   return (
     <div className="container">
-      <div className="count-wrap">
-        <button onClick={decreement}>-</button>
-        <span>{count}</span>
-        <button onClick={increement}>+</button>
-      </div>
+      <Context>
+        <Books />
+      </Context>
     </div>
   )
 }
